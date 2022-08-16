@@ -1,7 +1,5 @@
 package com.example.demo.calculator;
 
-import com.example.demo.calculator.Calculator;
-import com.example.demo.calculator.CalculatorException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,8 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalcController {
 	private final Calculator calculator;
 
-	public CalcController(Calculator calculator) {
-    		this.calculator = calculator;
+
+	MyService myService;
+
+	public CalcController(Calculator calculator, MyService myService) {
+		this.calculator = calculator;
+		this.myService = myService;
 	}
 
 	@RequestMapping("/")
@@ -21,5 +23,11 @@ public class CalcController {
     		} catch (CalculatorException e) {
         		return e.getMessage();
 	    	}
+	}
+
+
+	@RequestMapping("/name")
+	public String add(String expression) {
+		return myService.add(expression);
 	}
 }
