@@ -1,5 +1,10 @@
 package com.example.demo.calculator;
 
-public interface MyService {
-    String add(String name);
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyService  {
+    public String add(String name){
+        return name+" hello";
+    }
 }

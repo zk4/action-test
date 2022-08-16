@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 
 
 
-public class DemoApplicationTests {
+// 最简单的分层测试，可以不用启动 springboot
 
+public class DemoApplicationTests {
 	@Test
 	public void contextLoads() {
 		CalcController calcController = new CalcController(new Calculator() {
@@ -17,10 +18,10 @@ public class DemoApplicationTests {
 			public double process(String expression) {
 				return 3;
 			}
-		}, new MyService() {
+		}, new MyService(){
 			@Override
 			public String add(String name) {
-				return "good";
+				return "hello";
 			}
 		});
 		System.out.println(calcController.add("hello"));
